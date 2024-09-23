@@ -101,3 +101,4 @@ if __name__ == '__main__':
 
 #docker build -t my_flask_app .
 #docker run -p 5000:5000  my_flask_app
+# docker run --rm my_flask_app pytest
