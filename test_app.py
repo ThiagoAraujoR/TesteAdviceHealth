@@ -1,12 +1,12 @@
 import pytest
 from flask import Flask
 from models.car_owner import db, Owner, Car
-from app import app # Altera o nome da importação
+from app import app
 
 @pytest.fixture
 def app_init():
     app.config['TESTING'] = True
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'  # Usar banco de dados em memória para testes
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///:memory:'  
     with app.app_context():
         db.create_all()
         yield app
@@ -14,7 +14,7 @@ def app_init():
 
 @pytest.fixture
 def client(app_init):
-    return app_init.test_client()  # Ajusta para usar app_init
+    return app_init.test_client()  
 
 def test_add_owner(client):
     response = client.post('/add_owner', json={"name": "Test", "is_sale_opportunity": True})
